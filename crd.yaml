@@ -1,0 +1,8 @@
+apiVersion: elfak.rs/v1
+kind: ResourceReplica
+metadata:
+  name: nikola
+spec:
+  name: Nikola Milovanovic
+  replicas: 5
+  image: nginx:latest
