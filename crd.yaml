@@ -1,8 +1,14 @@
-apiVersion: elfak.rs/v1
-kind: ResourceReplica
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
 metadata:
-  name: nikola
+  name: resourcereplicas.elfak.rs
 spec:
-  name: Nikola Milovanovic
-  replicas: 5
-  image: nginx:latest
+  group: elfak.rs
+  version: v1
+  names:
+    kind: ResourceReplica
+    plural: resourcereplicas
+    singular: resourcereplica
+  scope: Namespaced
+  subresources:
+    status: {}

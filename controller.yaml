@@ -4,6 +4,7 @@ metadata:
   name: resourcereplicacontroller
 spec:
   generateSelector: true
+  resyncPeriodSeconds: 10
   parentResource:
     apiVersion: elfak.rs/v1
     resource: resourcereplicas
@@ -16,3 +17,4 @@ spec:
     sync:
       webhook:
         url: http://192.168.1.4:8080/sync
+        timeout: 5s
