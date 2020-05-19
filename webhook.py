@@ -62,15 +62,17 @@ def estimate_num_replicas(parent, children):
                 val += int(container['usage']['cpu'][:-1])
             pod_resources[pod[0]] += val
         # pod_resources za svaki pod u sistemu (pretpostavlja da svaki pod ima samo jedan kontejner
-        # sto je i slucaj sa "nasim" replikama) sadrzi kolicinu CPU resursa koje taj pod zauzima
+        # sto je i slucaj sa "nasim" replikama) sadrzi kolicinu CPU resursa koje taj pod zauzima (0-1000)
         pod_names = children.keys()
-        # pod_names sadrzi imena svake od replika za odredjenog parenta
+        # pod_names sadrzi imena svake od replika za parenta sa kojim se trenutno radi
         sum = 0
         for pod_name in pod_names:
             sum += pod_resources.get(pod_name, 0)
 
         if sum > 900*len(pod_names):
             return len(pod_names)+1
+        elif sum < 400*len(pod_names):
+            return len(pod_names)/2
         else:
             return len(pod_names)
 
