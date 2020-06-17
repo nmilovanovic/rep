@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    app: myapp
+  name: rest
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+      creationTimestamp: null
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - image: milovanovicsnikola/pyrest
+        name: rest
+        ports:
+        - containerPort: 8001
+        - containerPort: 8000
+        resources: {}
+      restartPolicy: Always
+status: {}

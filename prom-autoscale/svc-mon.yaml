@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: rest-metrics
+  namespace: monitoring
+  labels:
+    app: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  endpoints:
+  - port: metrics
