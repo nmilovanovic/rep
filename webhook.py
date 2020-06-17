@@ -4,11 +4,7 @@ from influxdb import InfluxDBClient
 import http.client
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-# https://github.com/flugel-it/k8s-metacontroller-operator
-# https://github.com/shovanmaity/metacontroller-by-example
-
 client = None
-
 
 def get_num_replicas(mode, string_spans, time):
     if mode == 'day':
@@ -44,7 +40,7 @@ def get_num_replicas(mode, string_spans, time):
     else:
         return 1
 
-def estimate_num_replicas(parent, children):
+def estimate_num_replicas(parent, children, threshold1=0.9, threshold2=0.25):
     if len(children) == 0:
         return 1
     else:
@@ -69,9 +65,9 @@ def estimate_num_replicas(parent, children):
         for pod_name in pod_names:
             sum += pod_resources.get(pod_name, 0)
 
-        if sum > 900*len(pod_names):
+        if sum > threshold1*1000*len(pod_names):
             return len(pod_names)+1
-        elif sum < 400*len(pod_names):
+        elif sum < threshold2*1000*len(pod_names):
             return len(pod_names)/2
         else:
             return len(pod_names)
