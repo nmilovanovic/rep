@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pictures
+  name: pictures
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: pictures
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: pictures
+    spec:
+      containers:
+        - image: milovanovicsnikola/pictures:v1
+          name: pictures
+          ports:
+            - containerPort: 50000
+          resources: {}
+      restartPolicy: Always
+status: {}

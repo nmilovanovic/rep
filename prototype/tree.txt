@@ -1,0 +1,84 @@
+.
+├── compose-manifests
+│   └── docker-compose.yaml
+├── kubernetes-manifests
+│   ├── cart-deployment.yaml
+│   ├── cart-service.yaml
+│   ├── checkout-deployment.yaml
+│   ├── checkout-service.yaml
+│   ├── frontend-deployment.yaml
+│   ├── frontend-scaling.yaml
+│   ├── frontend-service.yaml
+│   ├── pictures-deployment.yaml
+│   ├── pictures-service.yaml
+│   ├── specs-deployment.yaml
+│   └── specs-service.yaml
+├── src
+│   ├── cart
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   ├── __pycache__ [error opening dir]
+│   │   ├── requirements.in
+│   │   └── requirements.txt
+│   ├── checkout
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   ├── __pycache__ [error opening dir]
+│   │   ├── requirements.in
+│   │   └── requirements.txt
+│   ├── example
+│   │   ├── example.py
+│   │   ├── file.txt
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   └── __pycache__ [error opening dir]
+│   ├── frontend
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   ├── __pycache__ [error opening dir]
+│   │   ├── requirements.in
+│   │   ├── requirements.txt
+│   │   ├── static
+│   │   │   └── hello.js
+│   │   └── templates
+│   │       ├── addproduct.html
+│   │       ├── index.html
+│   │       ├── listcart.html
+│   │       ├── listcheckouts.html
+│   │       ├── listproducts.html
+│   │       └── logout.html
+│   ├── install-kompose.sh
+│   ├── Makefile
+│   ├── pictures
+│   │   ├── app.py
+│   │   ├── Dockerfile
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   ├── prototype.pb.h
+│   │   ├── __pycache__ [error opening dir]
+│   │   ├── requirements.in
+│   │   ├── requirements.txt
+│   │   └── server.cpp
+│   ├── protos
+│   │   ├── prototype_pb2_grpc.py
+│   │   ├── prototype_pb2.py
+│   │   ├── prototype.pb.cc
+│   │   ├── prototype.pb.h
+│   │   └── prototype.proto
+│   └── specs
+│       ├── app.py
+│       ├── Dockerfile
+│       ├── prototype_pb2_grpc.py
+│       ├── prototype_pb2.py
+│       ├── __pycache__ [error opening dir]
+│       ├── requirements.in
+│       └── requirements.txt
+└── tree.txt
+
+18 directories, 63 files

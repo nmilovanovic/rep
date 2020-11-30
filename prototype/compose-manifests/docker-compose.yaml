@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+    frontend:
+     depends_on:
+       - pictures
+       - specs
+       - cart
+       - checkout
+     image: milovanovicsnikola/frontend:v1
+     ports:
+       - "80:80"
+       - "8000:8000"
+     environment:
+       - PICTURES=172.17.0.1:50000
+       - SPECS=172.17.0.1:50001
+       - CART=172.17.0.1:50002
+       - CHECKOUT=172.17.0.1:50003
+    pictures:
+     image: milovanovicsnikola/pictures:v1
+     ports:
+       - "50000:50000"
+    specs:
+     image: milovanovicsnikola/specs:v1
+     ports:
+       - "50001:50000"
+    cart:
+     image: milovanovicsnikola/cart:v1
+     ports:
+       - "50002:50000"
+    checkout:
+     image: milovanovicsnikola/checkout:v1
+     ports:
+       - "50003:50000"
+     #network_mode: "host"

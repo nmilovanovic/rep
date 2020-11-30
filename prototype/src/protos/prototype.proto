@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package prototype;
+
+service Pictures {
+    rpc GetPicture (PictureRequest) returns (PictureResponse) {}
+    rpc AddPicture (AddPictureRequest) returns (PictureResponse) {}
+}
+  
+message PictureRequest {
+    string productid = 1;
+}
+
+message AddPictureRequest {
+    string productid = 1;
+    bytes content = 2;
+}
+  
+message PictureResponse {
+    bytes content = 1;
+}
+
+service Specs {
+    rpc ListProducts(SpecsRequest) returns (SpecsResponse) {}
+    rpc AddProduct(SpecsRequest) returns (SpecsResponse) {}
+    rpc GetProduct(SpecsRequest) returns (SpecsResponse) {}
+}
+
+message SpecsRequest {
+    string content = 1;
+}
+
+message SpecsResponse {
+    string content = 1;
+}
+
+service Cart {
+    rpc AddProduct(CartRequest) returns (CartResponse) {}
+    rpc CheckoutCart(CartRequest) returns (CartResponse) {}
+    rpc ListProducts(CartRequest) returns (CartResponse) {}
+}
+
+message CartRequest {
+    string content = 1;
+    string productid = 2;
+    string userid = 3;
+}
+
+message CartResponse {
+    string content = 1;
+}
+
+service Checkout {
+    rpc AddCart(CheckoutRequest) returns (CheckoutResponse) {}
+    rpc ListCheckouts(CheckoutRequest) returns (CheckoutResponse) {}
+}
+
+message CheckoutRequest {
+    string userid = 1;
+    string content = 2;
+}
+
+message CheckoutResponse {
+    string content = 1;
+}
+
+

@@ -1,0 +1,33 @@
+<html>
+   <head>
+   </head>
+   <body>
+      <div>
+         <a href = '/logout'>Click here to log out.</a>
+      </div>
+      <div>
+         <h1>Your user identification number is: {{userid}}</h1>
+      </div>
+      <div>
+        {% for checkout_key in checkouts_dict.keys() %}
+            <table width=200px height=200px border=3>
+                <tr>
+                    <th>Checkout ID</th>
+                    <td>{{ checkout_key }}</td>
+                </tr>
+                <tr>
+                    <th>User ID</th>
+                    <td>{{ checkouts_dict[checkout_key]['userid'] }}</td>
+                </tr>
+                {% for item in checkouts_dict[checkout_key]['list'] %}
+                    <tr>
+                        <th>Item</th>
+                        <td>{{ item }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+      </div>
+      
+   </body>
+</html>

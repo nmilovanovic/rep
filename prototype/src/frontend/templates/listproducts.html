@@ -1,0 +1,38 @@
+<html>
+   <head>
+   </head>
+   <body>
+      <div>
+         <a href = '/logout'>Click here to log out.</a>
+      </div>
+      <div>
+         <h1>Your user identification number is: {{userid}}</h1>
+      </div>
+      <div>
+        {% for product_key in products_dict.keys() %}
+            <table width=200px height=200px border=3>
+                <tr>
+                    <td>picture</td>
+                    <td><img width="100" height="100" src={{'images' + '/' + products_dict[product_key]['productid']}}></td>
+                </tr>
+                {% for key in products_dict[product_key] %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ products_dict[product_key][key] }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <th>Buy me</th>
+                    <td>
+                        <form action="/addtocart" method="POST">
+                            <input type="hidden" name="productid" value={{products_dict[product_key]['productid'] }} /><br>
+                            <input type="submit" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        {% endfor %}
+      </div>
+      
+   </body>
+</html>

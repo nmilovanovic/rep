@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: frontend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: frontend
+    spec:
+      containers:
+        - env:
+            - name: CART
+              value: cart:50000
+            - name: CHECKOUT
+              value: checkout:50000
+            - name: PICTURES
+              value: pictures:50000
+            - name: SPECS
+              value: specs:50000
+          image: milovanovicsnikola/frontend:v1
+          name: frontend
+          ports:
+            - containerPort: 80
+            - containerPort: 8000
+          resources: {}
+      restartPolicy: Always
+status: {}

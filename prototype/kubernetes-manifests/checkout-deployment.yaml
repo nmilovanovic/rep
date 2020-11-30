@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: checkout
+  name: checkout
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: checkout
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../compose-manifests/docker-compose.yaml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: checkout
+    spec:
+      containers:
+        - image: milovanovicsnikola/checkout:v1
+          name: checkout
+          ports:
+            - containerPort: 50000
+          resources: {}
+      restartPolicy: Always
+status: {}
