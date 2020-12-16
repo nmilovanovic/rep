@@ -16,20 +16,29 @@ services:
        - SPECS=172.17.0.1:50001
        - CART=172.17.0.1:50002
        - CHECKOUT=172.17.0.1:50003
+       - PYTHONUNBUFFERED=1
     pictures:
      image: milovanovicsnikola/pictures:v1
      ports:
        - "50000:50000"
+     environment:
+       - PYTHONUNBUFFERED=1
     specs:
      image: milovanovicsnikola/specs:v1
      ports:
        - "50001:50000"
+     environment:
+       - PYTHONUNBUFFERED=1
     cart:
      image: milovanovicsnikola/cart:v1
      ports:
        - "50002:50000"
+     environment:
+       - PYTHONUNBUFFERED=1
     checkout:
      image: milovanovicsnikola/checkout:v1
      ports:
        - "50003:50000"
+     environment:
+       - PYTHONUNBUFFERED=1
      #network_mode: "host"

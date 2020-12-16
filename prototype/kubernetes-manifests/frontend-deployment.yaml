@@ -33,6 +33,8 @@ spec:
               value: pictures:50000
             - name: SPECS
               value: specs:50000
+            - name: PYTHONUNBUFFERED
+              value: '1'
           image: milovanovicsnikola/frontend:v1
           name: frontend
           ports:

@@ -29,5 +29,8 @@ spec:
           ports:
             - containerPort: 50000
           resources: {}
+          env:
+            - name: PYTHONUNBUFFERED
+              value: '1'
       restartPolicy: Always
 status: {}
